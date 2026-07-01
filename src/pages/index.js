@@ -1,6 +1,12 @@
 import { useState } from "react";
 import LanguageSwitcher from "../components/LanguageSwitcher";
+import { useLanguage } from "../context/LanguageContext";
+import { translations } from "../data/translations";
+
 export default function Home() {
+  const { lang } = useLanguage();
+  const t = translations[lang];
+
   const [selectedImage, setSelectedImage] = useState(null);
 
   const images = [
@@ -14,8 +20,11 @@ export default function Home() {
 
   return (
     <main style={{ background: "#050505", color: "white", minHeight: "100vh" }}>
-      {/* NAVBAR */}
+
+      {/* LANGUAGE SWITCHER */}
       <LanguageSwitcher />
+
+      {/* NAVBAR */}
       <header style={{
         display: "flex",
         justifyContent: "space-between",
@@ -31,13 +40,23 @@ export default function Home() {
           DAIVY
         </div>
 
-<nav style={{ display: "flex", gap: "30px", fontSize: "14px", opacity: 0.8 }}>
-  <a href="/" style={{ color: "white", textDecoration: "none" }}>Home</a>
-  <a href="/portfolio" style={{ color: "white", textDecoration: "none" }}>Portfolio</a>
-  <a href="/travel" style={{ color: "white", textDecoration: "none" }}>Travel</a>
-  <a href="/about" style={{ color: "white", textDecoration: "none" }}>About</a>
-  <a href="/contact" style={{ color: "white", textDecoration: "none" }}>Contact</a>
-</nav>
+        <nav style={{ display: "flex", gap: "30px", fontSize: "14px", opacity: 0.8 }}>
+          <a href="/" style={{ color: "white", textDecoration: "none" }}>
+            {t.nav_home}
+          </a>
+          <a href="/portfolio" style={{ color: "white", textDecoration: "none" }}>
+            {t.nav_portfolio}
+          </a>
+          <a href="/travel" style={{ color: "white", textDecoration: "none" }}>
+            {t.nav_travel}
+          </a>
+          <a href="/about" style={{ color: "white", textDecoration: "none" }}>
+            {t.nav_about}
+          </a>
+          <a href="/contact" style={{ color: "white", textDecoration: "none" }}>
+            {t.nav_contact}
+          </a>
+        </nav>
       </header>
 
       {/* HERO */}
@@ -46,13 +65,11 @@ export default function Home() {
         padding: "100px 20px 60px"
       }}>
         <h1 style={{ fontSize: "64px", marginBottom: "20px" }}>
-          Visual Stories
+          {t.title}
         </h1>
 
         <p style={{ opacity: 0.6, maxWidth: "600px", margin: "0 auto", lineHeight: 1.6 }}>
-          Photographer · Traveler · Story Collector  
-          <br />
-          Capturing moments from streets, cities, and quiet places around the world.
+          {t.subtitle}
         </p>
       </section>
 
