@@ -1,6 +1,8 @@
 import { useState } from "react";
 
 export default function Home() {
+  const [selectedImage, setSelectedImage] = useState(null);
+
   const images = [
     "/1.jpg",
     "/2.jpg",
@@ -10,43 +12,66 @@ export default function Home() {
     "/6.jpg"
   ];
 
-  const [selectedImage, setSelectedImage] = useState(null);
-
   return (
-    <main style={{
-      background: "#050505",
-      color: "white",
-      minHeight: "100vh",
-      padding: "60px",
-      position: "relative"
-    }}>
+    <main style={{ background: "#050505", color: "white", minHeight: "100vh" }}>
 
-      {/* Header */}
-      <div style={{ textAlign: "center", marginBottom: "60px" }}>
-        <h1 style={{ fontSize: "48px" }}>DAIVY</h1>
-        <p style={{ opacity: 0.6 }}>Photography Portfolio</p>
-      </div>
+      {/* NAVBAR */}
+      <header style={{
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        padding: "20px 60px",
+        borderBottom: "1px solid #111",
+        position: "sticky",
+        top: 0,
+        background: "#050505",
+        zIndex: 10
+      }}>
+        <div style={{ fontWeight: "bold", letterSpacing: "3px" }}>
+          DAIVY
+        </div>
 
-      {/* Grid */}
-      <div style={{
+        <nav style={{ display: "flex", gap: "30px", fontSize: "14px", opacity: 0.8 }}>
+          <span style={{ cursor: "pointer" }}>Portfolio</span>
+          <span style={{ cursor: "pointer" }}>Travel</span>
+          <span style={{ cursor: "pointer" }}>About</span>
+          <span style={{ cursor: "pointer" }}>Contact</span>
+        </nav>
+      </header>
+
+      {/* HERO */}
+      <section style={{
+        textAlign: "center",
+        padding: "100px 20px 60px"
+      }}>
+        <h1 style={{ fontSize: "64px", marginBottom: "20px" }}>
+          Visual Stories
+        </h1>
+
+        <p style={{ opacity: 0.6, maxWidth: "600px", margin: "0 auto", lineHeight: 1.6 }}>
+          Photographer · Traveler · Story Collector  
+          <br />
+          Capturing moments from streets, cities, and quiet places around the world.
+        </p>
+      </section>
+
+      {/* GALLERY */}
+      <section style={{
+        padding: "0 60px 80px",
         display: "grid",
-        gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+        gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
         gap: "20px"
       }}>
         {images.map((img, i) => (
-          <div key={i} style={{
-            overflow: "hidden",
-            borderRadius: "12px",
-            cursor: "pointer"
-          }}>
+          <div key={i} style={{ borderRadius: "12px", overflow: "hidden" }}>
             <img
               src={img}
-              alt=""
               onClick={() => setSelectedImage(img)}
               style={{
                 width: "100%",
-                height: "300px",
+                height: "320px",
                 objectFit: "cover",
+                cursor: "pointer",
                 transition: "0.3s"
               }}
               onMouseOver={(e) => e.currentTarget.style.transform = "scale(1.05)"}
@@ -54,9 +79,20 @@ export default function Home() {
             />
           </div>
         ))}
-      </div>
+      </section>
 
-      {/* Lightbox */}
+      {/* FOOTER */}
+      <footer style={{
+        textAlign: "center",
+        padding: "40px",
+        borderTop: "1px solid #111",
+        opacity: 0.5,
+        fontSize: "12px"
+      }}>
+        © 2026 DAIVY — Photography Portfolio
+      </footer>
+
+      {/* LIGHTBOX */}
       {selectedImage && (
         <div
           onClick={() => setSelectedImage(null)}
@@ -66,7 +102,7 @@ export default function Home() {
             left: 0,
             width: "100%",
             height: "100%",
-            background: "rgba(0,0,0,0.9)",
+            background: "rgba(0,0,0,0.92)",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
@@ -76,11 +112,7 @@ export default function Home() {
         >
           <img
             src={selectedImage}
-            style={{
-              maxWidth: "90%",
-              maxHeight: "90%",
-              borderRadius: "10px"
-            }}
+            style={{ maxWidth: "90%", maxHeight: "90%", borderRadius: "10px" }}
           />
         </div>
       )}
