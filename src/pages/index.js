@@ -5,6 +5,7 @@ import { translations } from "../data/translations";
 
 export default function Home() {
   const { lang } = useLanguage();
+  console.log("CURRENT LANG:", lang);
   const t = translations[lang];
 
   const [selectedImage, setSelectedImage] = useState(null);
