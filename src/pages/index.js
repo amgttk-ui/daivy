@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 export default function Home() {
   const [selectedImage, setSelectedImage] = useState(null);
 
@@ -14,7 +14,7 @@ export default function Home() {
 
   return (
     <main style={{ background: "#050505", color: "white", minHeight: "100vh" }}>
-
+<LanguageSwitcher />
       {/* NAVBAR */}
       <header style={{
         display: "flex",
