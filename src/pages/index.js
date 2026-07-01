@@ -10,12 +10,15 @@ export default function Home() {
     "/6.jpg"
   ];
 
+  const [selectedImage, setSelectedImage] = useState(null);
+
   return (
     <main style={{
       background: "#050505",
       color: "white",
       minHeight: "100vh",
-      padding: "60px"
+      padding: "60px",
+      position: "relative"
     }}>
 
       {/* Header */}
@@ -38,6 +41,8 @@ export default function Home() {
           }}>
             <img
               src={img}
+              alt=""
+              onClick={() => setSelectedImage(img)}
               style={{
                 width: "100%",
                 height: "300px",
@@ -50,6 +55,35 @@ export default function Home() {
           </div>
         ))}
       </div>
+
+      {/* Lightbox */}
+      {selectedImage && (
+        <div
+          onClick={() => setSelectedImage(null)}
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            background: "rgba(0,0,0,0.9)",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            cursor: "zoom-out",
+            zIndex: 999
+          }}
+        >
+          <img
+            src={selectedImage}
+            style={{
+              maxWidth: "90%",
+              maxHeight: "90%",
+              borderRadius: "10px"
+            }}
+          />
+        </div>
+      )}
 
     </main>
   );
