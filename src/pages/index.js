@@ -31,12 +31,13 @@ export default function Home() {
           DAIVY
         </div>
 
-        <nav style={{ display: "flex", gap: "30px", fontSize: "14px", opacity: 0.8 }}>
-          <span style={{ cursor: "pointer" }}>Portfolio</span>
-          <span style={{ cursor: "pointer" }}>Travel</span>
-          <span style={{ cursor: "pointer" }}>About</span>
-          <span style={{ cursor: "pointer" }}>Contact</span>
-        </nav>
+<nav style={{ display: "flex", gap: "30px", fontSize: "14px", opacity: 0.8 }}>
+  <a href="/" style={{ color: "white", textDecoration: "none" }}>Home</a>
+  <a href="/portfolio" style={{ color: "white", textDecoration: "none" }}>Portfolio</a>
+  <a href="/travel" style={{ color: "white", textDecoration: "none" }}>Travel</a>
+  <a href="/about" style={{ color: "white", textDecoration: "none" }}>About</a>
+  <a href="/contact" style={{ color: "white", textDecoration: "none" }}>Contact</a>
+</nav>
       </header>
 
       {/* HERO */}
