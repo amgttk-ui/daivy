@@ -1,73 +1,54 @@
+import { useState } from "react";
+
 export default function Home() {
+  const images = [
+    "/1.jpg",
+    "/2.jpg",
+    "/3.jpg",
+    "/4.jpg",
+    "/5.jpg",
+    "/6.jpg"
+  ];
+
   return (
     <main style={{
       background: "#050505",
-      color: "#ffffff",
+      color: "white",
       minHeight: "100vh",
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "center",
-      alignItems: "center",
-      textAlign: "center",
-      padding: "40px",
-      fontFamily: "system-ui, -apple-system, sans-serif"
+      padding: "60px"
     }}>
 
-      {/* Brand */}
-      <div style={{ letterSpacing: "6px", opacity: 0.6 }}>
-        DAIVY
+      {/* Header */}
+      <div style={{ textAlign: "center", marginBottom: "60px" }}>
+        <h1 style={{ fontSize: "48px" }}>DAIVY</h1>
+        <p style={{ opacity: 0.6 }}>Photography Portfolio</p>
       </div>
 
-      {/* Main Title */}
-      <h1 style={{
-        fontSize: "64px",
-        margin: "20px 0",
-        fontWeight: 600
-      }}>
-        Visual Stories
-      </h1>
-
-      {/* Subtitle */}
-      <p style={{
-        maxWidth: "600px",
-        opacity: 0.7,
-        lineHeight: 1.8,
-        fontSize: "18px"
-      }}>
-        Photographer · Traveler · Story Collector  
-        <br />
-        Capturing moments from streets, cities, and quiet places around the world.
-      </p>
-
-      {/* Divider */}
+      {/* Grid */}
       <div style={{
-        width: "60px",
-        height: "1px",
-        background: "#444",
-        margin: "40px 0"
-      }} />
-
-      {/* Menu */}
-      <div style={{
-        display: "flex",
-        gap: "30px",
-        fontSize: "14px",
-        opacity: 0.8
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+        gap: "20px"
       }}>
-        <span style={{ cursor: "pointer" }}>Portfolio</span>
-        <span style={{ cursor: "pointer" }}>Travel</span>
-        <span style={{ cursor: "pointer" }}>About</span>
-        <span style={{ cursor: "pointer" }}>Contact</span>
-      </div>
-
-      {/* Footer */}
-      <div style={{
-        position: "absolute",
-        bottom: "30px",
-        fontSize: "12px",
-        opacity: 0.4
-      }}>
-        © 2026 DAIVY. All rights reserved.
+        {images.map((img, i) => (
+          <div key={i} style={{
+            overflow: "hidden",
+            borderRadius: "12px",
+            cursor: "pointer"
+          }}>
+            <img
+              src={img}
+              style={{
+                width: "100%",
+                height: "300px",
+                objectFit: "cover",
+                transition: "0.3s"
+              }}
+              onMouseOver={(e) => e.currentTarget.style.transform = "scale(1.05)"}
+              onMouseOut={(e) => e.currentTarget.style.transform = "scale(1)"}
+            />
+          </div>
+        ))}
       </div>
 
     </main>
