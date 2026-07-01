@@ -10,16 +10,24 @@ export default function LanguageSwitcher() {
   ];
 
   return (
-    <div style={{ position: "absolute", top: 20, right: 20 }}>
+    <div style={{
+      position: "fixed",
+      top: "18px",
+      right: "18px",
+      zIndex: 99999
+    }}>
       <select
         value={lang}
         onChange={(e) => setLang(e.target.value)}
         style={{
-          padding: "6px 10px",
           background: "#111",
-          color: "white",
+          color: "#fff",
           border: "1px solid #333",
-          borderRadius: "6px"
+          padding: "8px 12px",
+          borderRadius: "8px",
+          cursor: "pointer",
+          outline: "none",
+          fontSize: "13px"
         }}
       >
         {languages.map((l) => (
